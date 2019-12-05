@@ -4,6 +4,8 @@ from bs4 import BeautifulSoup
 
 
 def getTable(URL):
+    '''given a URL this function returns a cleaned dataframe with all the
+    creatures of the type in the url, the df matches the table on the given url'''
     page = requests.get(URL).text
     soup = BeautifulSoup(page, 'html.parser')
     table = soup.find('tbody').findNext('tbody')
@@ -21,6 +23,7 @@ def getTable(URL):
 
 
 def cleanSpeed(data):
+    '''a .apply function to extract the base speed'''
     dat = data.split()
     for word in dat:
         try:
